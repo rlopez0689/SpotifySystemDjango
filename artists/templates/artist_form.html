@@ -1,0 +1,114 @@
+{% extends "baseApp.html" %}
+{% block content %}
+
+<div class="container">
+	<div class="row">
+        <div class="col-md-6 col-md-offset-3">
+    		<h2></h2>
+            <div id="custom-search-input">
+                <form method="post">
+                    <div class="input-group col-md-12">
+                        {% csrf_token %}
+                        <input name="artist" type="text" class="form-control input-lg" placeholder="Search for {{ slug }}" />
+                        <span class="input-group-btn">
+                            <button class="btn btn-info btn-lg" type="submit">
+                                <i class="glyphicon glyphicon-search"></i>
+                            </button>
+                        </span>
+                    </div>
+                </form>
+            </div>
+        </div>
+	</div>
+    {% if results %}
+        {% if slug == 'artist' %}
+        <div class="row">
+            {% for artist in results.response.artists.items %}
+            <div class="col-xs-12 col-sm-12 col-md-3 col-lg-3 toppad" style="margin-top:50px;" >
+              <div class="panel panel-info">
+                <div class="panel-heading">
+                  <a href="/{{ slug }}/{{ artist.id }}"><h3 class="panel-title">{{ artist.name }}</h3></a>
+                </div>
+                <div class="panel-body">
+                  <div class="row">
+                    <div class=" col-md-12 col-lg-12 ">
+                      {% if artist.images %}
+                        <img alt="Artist pic" src="{{ artist.images.1.url }}" class="img-responsive">
+                    {% else %}
+                        <img alt="Artist pic" src="{{ MEDIA_URL }}/avatars/anon.jpeg" class="img-responsive">
+                    {% endif %}
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            {% if forloop.counter|divisibleby:4 %}
+        </div>
+        <div class="row">
+            {% endif %}
+            {% endfor %}
+        </div>
+        {% endif %}
+
+        {% if slug == 'album' %}
+        <div class="row">
+            {% for album in results.response.albums.items %}
+            <div class="col-xs-12 col-sm-12 col-md-3 col-lg-3 toppad" style="margin-top:50px;" >
+              <div class="panel panel-info">
+                <div class="panel-heading">
+                  <a href="/{{ slug }}/{{ album.id }}"><h3 class="panel-title">{{ album.name }}</h3></a>
+                </div>
+                <div class="panel-body">
+                  <div class="row">
+                    <div class=" col-md-12 col-lg-12 ">
+                      {% if album.images %}
+                        <img alt="Artist pic" src="{{ album.images.1.url }}" class="img-responsive">
+                    {% else %}
+                        <img alt="Artist pic" src="{{ MEDIA_URL }}/avatars/anon.jpeg" class="img-responsive">
+                    {% endif %}
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            {% if forloop.counter|divisibleby:4 %}
+        </div>
+        <div class="row">
+            {% endif %}
+            {% endfor %}
+        </div>
+        {% endif %}
+
+        {% if slug == 'track' %}
+        <div class="row">
+            {% for track in results.response.tracks.items %}
+            <div class="col-xs-12 col-sm-12 col-md-3 col-lg-3 toppad" style="margin-top:50px;" >
+              <div class="panel panel-info">
+                <div class="panel-heading">
+                  <a href="/{{ slug }}/{{ track.id }}"><h3 class="panel-title">{{ track.name }}</h3></a>
+                </div>
+                <div class="panel-body">
+                  <div class="row">
+                    <div class=" col-md-12 col-lg-12 ">
+                      {% if track.album.images %}
+                        <img alt="Artist pic" src="{{ track.album.images.1.url }}" class="img-responsive">
+                    {% else %}
+                        <img alt="Artist pic" src="{{ MEDIA_URL }}/avatars/anon.jpeg" class="img-responsive">
+                    {% endif %}
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            {% if forloop.counter|divisibleby:4 %}
+        </div>
+        <div class="row">
+            {% endif %}
+            {% endfor %}
+        </div>
+        {% endif %}
+
+    {% endif %}
+    </div>
+</div>
+{% endblock %}

@@ -1,0 +1,16 @@
+.content{
+    padding-top: 63px;
+}
+
+.navigation_bar{
+    margin-right: 0px;
+}
+
+.cover_art{
+    margin-bottom: 1%;
+}
+
+.recents_scroll{
+    max-height: 165px;
+    overflow: scroll;
+}
