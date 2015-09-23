@@ -30,6 +30,7 @@ class SearchArtist(LoginRequiredMixin, View):
         results = dict()
         results['albums'] = albums.json()
         results['response'] = r.json()
-        hs = HistorySearch(user=self.request.user, type='artist', name=results['response']['name'], url='/artist/'+artist_id)
+        hs = HistorySearch(user=self.request.user, type='artist', name=results['response']['name'],
+                                      url='/artist/'+artist_id)
         hs.save()
         return render(request, self.template_name, {'results': results})

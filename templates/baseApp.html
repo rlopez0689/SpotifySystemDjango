@@ -38,15 +38,13 @@
                         <li><a>About</a></li>
                         <li class="dropdown">
                           <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
-
-
                               {% if user.userprofile.avatar %}
-                                  {% thumbnail user.userprofile.avatar "32x32" crop="center" as im %}
-                                    <img src="{{ im.url }}" width="{{ im.width }}" height="{{ im.height }}">
+                                  {% thumbnail user.userprofile.avatar "20x20" crop="center" as im %}
+                                    <img class="img-circle" src="{{ im.url }}" width="{{ im.width }}" height="{{ im.height }}">
                                   {% endthumbnail %}<span class="caret"></span>
                               {% else %}
                                   {% thumbnail "http://www.bitrebels.com/wp-content/uploads/2011/02/Original-Facebook-Geek-Profile-Avatar-2.jpg" "32x32" crop="center" as im %}
-                                    <img src="{{ im.url }}" width="{{ im.width }}" height="{{ im.height }}">
+                                    <img class="img-circle" src="{{ im.url }}" width="{{ im.width }}" height="{{ im.height }}">
                                   {% endthumbnail %}<span class="caret"></span>
                               {% endif %}
                           </a>
@@ -55,8 +53,6 @@
                             <li><a href="/logout/">Logout</a></li>
                           </ul>
                         </li>
-
-
                     </ul>
                 </div>
             {% endif %}

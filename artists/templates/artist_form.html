@@ -24,18 +24,18 @@
         {% if slug == 'artist' %}
         <div class="row">
             {% for artist in results.response.artists.items %}
-            <div class="col-xs-12 col-sm-12 col-md-3 col-lg-3 toppad" style="margin-top:50px;" >
+            <div class="col-xs-6 col-sm-6 col-md-3 col-lg-3 toppad" style="margin-top:50px;" >
               <div class="panel panel-info">
                 <div class="panel-heading">
-                  <a href="/{{ slug }}/{{ artist.id }}"><h3 class="panel-title">{{ artist.name }}</h3></a>
+                  <a href="/{{ slug }}/{{ artist.id }}"><h3 class="panel-title">{{ artist.name|truncatechars:17 }}</h3></a>
                 </div>
                 <div class="panel-body">
                   <div class="row">
                     <div class=" col-md-12 col-lg-12 ">
                       {% if artist.images %}
-                        <img alt="Artist pic" src="{{ artist.images.1.url }}" class="img-responsive">
+                        <div class="img" style="background-image:url('{{ artist.images.1.url }}');"></div>
                     {% else %}
-                        <img alt="Artist pic" src="{{ MEDIA_URL }}/avatars/anon.jpeg" class="img-responsive">
+                        <div class="img" style="background-image:url('{{ MEDIA_URL }}/avatars/anon.jpeg');"></div>
                     {% endif %}
                     </div>
                   </div>
@@ -56,15 +56,15 @@
             <div class="col-xs-12 col-sm-12 col-md-3 col-lg-3 toppad" style="margin-top:50px;" >
               <div class="panel panel-info">
                 <div class="panel-heading">
-                  <a href="/{{ slug }}/{{ album.id }}"><h3 class="panel-title">{{ album.name }}</h3></a>
+                  <a href="/{{ slug }}/{{ album.id }}"><h3 class="panel-title">{{ album.name|truncatechars:17 }}</h3></a>
                 </div>
                 <div class="panel-body">
                   <div class="row">
                     <div class=" col-md-12 col-lg-12 ">
                       {% if album.images %}
-                        <img alt="Artist pic" src="{{ album.images.1.url }}" class="img-responsive">
+                        <div class="img" style="background-image:url('{{ album.images.1.url }}');"></div>
                     {% else %}
-                        <img alt="Artist pic" src="{{ MEDIA_URL }}/avatars/anon.jpeg" class="img-responsive">
+                        <div class="img" style="background-image:url('{{ MEDIA_URL }}/avatars/anon.jpeg');"></div>
                     {% endif %}
                     </div>
                   </div>
@@ -85,15 +85,15 @@
             <div class="col-xs-12 col-sm-12 col-md-3 col-lg-3 toppad" style="margin-top:50px;" >
               <div class="panel panel-info">
                 <div class="panel-heading">
-                  <a href="/{{ slug }}/{{ track.id }}"><h3 class="panel-title">{{ track.name }}</h3></a>
+                  <a href="/{{ slug }}/{{ track.id }}"><h3 class="panel-title">{{ track.name|truncatechars:17 }}</h3></a>
                 </div>
                 <div class="panel-body">
                   <div class="row">
                     <div class=" col-md-12 col-lg-12 ">
                       {% if track.album.images %}
-                        <img alt="Artist pic" src="{{ track.album.images.1.url }}" class="img-responsive">
+                        <div class="img" style="background-image:url('{{ album.images.1.url }}');"></div>
                     {% else %}
-                        <img alt="Artist pic" src="{{ MEDIA_URL }}/avatars/anon.jpeg" class="img-responsive">
+                        <div class="img" style="background-image:url('{{ MEDIA_URL }}/avatars/anon.jpeg');"></div>
                     {% endif %}
                     </div>
                   </div>
